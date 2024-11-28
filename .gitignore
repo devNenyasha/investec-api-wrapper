@@ -1,0 +1,8 @@
+/vendor/
+.env
+.idea/
+.vscode/
+.env
+.DS_Store
+/.idea
+/.vscode
