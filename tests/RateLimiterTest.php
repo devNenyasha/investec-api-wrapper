@@ -11,19 +11,17 @@ class RateLimiterTest extends TestCase
 
     protected function setUp(): void
     {
-        $this->rateLimiter = new RateLimiter(2, 1); // 2 requests per second for testing
+        $this->rateLimiter = new RateLimiter(2, 1);
     }
 
     public function testRespectRateLimit()
     {
-        // First two requests should work
         $this->rateLimiter->throttle();
         $this->rateLimiter->throttle();
         
         $this->expectException(\RuntimeException::class);
         $this->expectExceptionMessage('Rate limit of 2 requests per 1 seconds exceeded');
         
-        // Third request should throw
         $this->rateLimiter->throttle();
     }
 
@@ -34,8 +32,7 @@ class RateLimiterTest extends TestCase
         
         sleep(2); 
         
-    
         $this->rateLimiter->throttle();
-        $this->assertTrue(true); // Assert we got here without exception
+        $this->assertTrue(true);
     }
 }
