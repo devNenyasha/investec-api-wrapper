@@ -1,20 +1,69 @@
-# 🎄 Investec API Wrapper
+# 🎄 Investec API Wrapper: Your Festive Helper! 🎁
 
-A comprehensive PHP wrapper for Investec's Private Banking and ICIB APIs.
+A delightfully simple PHP wrapper for Investec's Private Banking and ICIB APIs. This wrapper simplifies API integration, handles authentication seamlessly, and empowers developers to build festive solutions! 🎅
+
+## 🎁 Features at a Glance
 
 Dear Santa, I want an API wrapper that:
 - 🎁 Works with both Private Banking and ICIB
-- 🎅 Handles OAuth automagically
-- 🦌 Is easy to use
+- 🎅 Handles OAuth automatically
+- 🦌 Simple, fluent interface
+- 🔒 Built-in error handling
+- 🔄 Automatic token refresh
+- ⚡ Rate limiting with backoff
 - 🎨 Has clear examples
 
-## 🎄 Installation
+## 🎄 Quick Start
 
+### Prerequisites
+Make sure you have:
+- [PHP 7.4 or higher](https://www.php.net/downloads.php) - Download and install PHP
+- [Composer](https://getcomposer.org/download/) - Download and install Composer
+- [Docker](https://www.docker.com/products/docker-desktop/) - Download and install Docker
+
+
+### Installation
+
+#### Set Up the Sandbox (for testing)
+
+1. Clone the sandbox repository:
+```bash
+git clone https://github.com/devinpearson/programmable-banking-sim.git
+cd programmable-banking-sim
+npm install
+```
+
+2. Run the server in a Docker container:
+```bash
+docker build -t investec-sim .
+docker run -p 3000:3000 investec-sim
+```
+
+3. Start the simulator:
+```bash
+npm run dev
+```
+Your sandbox will run at http://localhost:3000
+
+
+#### Install the wrapper
+
+1. Install the wrapper via Composer:
 ```bash
 composer require melodymbewe/investec-api-wrapper
 ```
-## 🎁 Quick Start
 
+### Step 2: Create Configuration
+Create a `.env` file in your project's root:
+```bash
+CLIENT_ID=your-client-id
+CLIENT_SECRET=your-client-secret
+API_KEY=your-api-key
+BASE_URL_PRIVATE_BANKING=https://api.investec.com/za/pb/v1
+BASE_URL_ICIB=https://api.investec.com/za/icib/v1
+```
+
+### Step 3: Create your client:
 ```php
 use MelodyMbewe\InvestecApiWrapper\Client;
 // Initialize the client
@@ -33,71 +82,39 @@ $corporateAccounts = $client->getICIBAccounts();
 $corporateBalance = $client->getICIBBalance($accountId);
 ```
 
-## 🎅 Features
+## 🧪 Running Comprehensive Tests
 
-### 🎁 1. Private Banking API
-- Account Management
-  - List accounts
-  - Get account balances
-  - View transactions
-- Card Services
-  - View card details
-  - Get card transactions
-- Payments
-  - Make transfers
-  - Schedule payments
+For a full test of all features, use the provided test script:
+```bash
+php run-test.php
+```
 
-### 🎁  2. ICIB (Corporate) API
-- Account Management
-  - List corporate accounts
-  - Get account balances
-  - View transactions
-- Bulk Payments
-  - Process multiple payments
-  - Payment status tracking
+## 🔍 Troubleshooting
 
-### 🦌 3. OAuth Implementation
-- Automatic token management
-- Smart token refresh
-- Zero configuration needed
-- Secure credential handling
-- Token caching
+If you encounter errors:
+1. Check your credentials in `.env`
+2. Ensure you have the required PHP extensions:
+   ```bash
+   php -m | grep -E "curl|json|openssl"
+   ```
+3. Verify your PHP version:
 
-## 🎨 Contributing
-Contributions are welcome! Please read our contributing guidelines.
+   ```bash
+   php -v
+   ```
 
-## 📝 License
-MIT License
+For detailed examples, see:
 
-## 🦌 OAuth Magic
-- Automatic token management
-- Smart token refresh
-- Zero-hassle authentication
+```php:investec-api-wrapper/examples/example.php
+startLine: 1
+endLine: 47
+```
+##📝 License
+This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for details.
 
-## 🔄 Retry Logic
+### 🚀 Resources
+- [Stateful Sandbox Documentation](https://developer.investec.com/za/api-products/stateful-sandbox)
+- [Wrapper Documentation](https://github.com/melodyMbewe/investec-api-wrapper/wiki)
 
-- Automatic retry on token expiration
-- Configurable retry attempts
-- Exponential backoff
-
-## 🔒 Rate Limiting
-
-The wrapper implements automatic rate limiting with exponential backoff:
-- 100 requests per minute by default
-- Configurable limits
-- Automatic retry with backoff
-
-## 🚨 Error Handling
-
-Comprehensive error handling with detailed information:
-- OAuth errors (401, 403)
-- Rate limiting (429)
-- API-specific errors
-- Network timeouts
-- Validation errors
-
-Each error includes:
-- Detailed message
-- Error code
-- Suggested resolution
-- Stack trace (in debug mode)
+🎄 A Festive Note
+This project is a mock environment, perfect for testing and developing your next big idea. Let’s make this season brighter with amazing tech! ✨
