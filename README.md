@@ -66,17 +66,21 @@ BASE_URL_ICIB=https://api.investec.com/za/icib/v1
 ### Step 3: Create your client:
 ```php
 use MelodyMbewe\InvestecApiWrapper\Client;
+
 // Initialize the client
 $client = new Client(
 'your-client-id',
 'your-client-secret',
 'your-api-key',
+
 'https://api.investec.com/za/pb/v1', // Private Banking endpoint
 'https://api.investec.com/za/icib/v1' // ICIB endpoint
 );
+
 // Private Banking Magic 🎁
 $accounts = $client->getPrivateBankingAccounts();
 $balance = $client->getPrivateBankingBalance($accountId);
+
 // ICIB Magic 🎅
 $corporateAccounts = $client->getICIBAccounts();
 $corporateBalance = $client->getICIBBalance($accountId);
